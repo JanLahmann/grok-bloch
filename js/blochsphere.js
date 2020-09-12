@@ -22,7 +22,10 @@ class BlochSphere extends BABYLON.Mesh {
         this.probAmplitude1 = math.complex(0, 0);
 
         this.scene = scene;
+        var verticalPositionInScene = -0.15; // move the sphere a bit downwards for RasQberry
+        this.verticalPositionInScene = verticalPositionInScene;
         this.sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameterX: 2.0, diameterY: 2.0, diameterZ: 2.0 }, scene);
+        this.sphere.position = new BABYLON.Vector3(0, this.verticalPositionInScene, 0);
         this.lineColor = new BABYLON.Color3(.3, .3, .3);
 
         this.quantumStateArrow = null;
@@ -203,31 +206,50 @@ class BlochSphere extends BABYLON.Mesh {
         zAxisLine.parent = this.sphere;
 
         // Axis labels
-        var xChar = this.makeTextPlane("X", "black", 0.2);
-        xChar.position = new BABYLON.Vector3(0, 0.1, -1.2);
+        var AxisLabelSize = 0.2
+
+        var xChar = this.makeTextPlane("X", "black", AxisLabelSize);
+        xChar.parent = this.sphere;
+        xChar.position = new BABYLON.Vector3(-0.1, -0.1, -0.9);
         xChar.isPickable = false;
 
-        var yChar = this.makeTextPlane("Y", "black", 0.2);
-        yChar.position = new BABYLON.Vector3(1.2, 0, 0);
+        var yChar = this.makeTextPlane("Y", "black", AxisLabelSize);
+        yChar.parent = this.sphere;
+        yChar.position = new BABYLON.Vector3(0.9, -0.1, -0.1);
         yChar.isPickable = false;
 
-        var zeroKet = this.makeTextPlane("|0⟩", "black", 0.2);
-        zeroKet.position = new BABYLON.Vector3(0, 1.2, 0);
+        var zeroKet = this.makeTextPlane("|0⟩", "black", AxisLabelSize);
+        zeroKet.parent = this.sphere;
+        zeroKet.position = new BABYLON.Vector3(-0.1, 0.9, 0);
         zeroKet.isPickable = false;
 
-        var oneKet = this.makeTextPlane("|1⟩", "black", 0.2);
-        oneKet.position = new BABYLON.Vector3(0, -1.2, 0);
+        var oneKet = this.makeTextPlane("|1⟩", "black", AxisLabelSize);
+        oneKet.parent = this.sphere;
+        oneKet.position = new BABYLON.Vector3(-0.1, -0.9, 0);
         oneKet.isPickable = false;
 
-        var plusKet = this.makeTextPlane("|+⟩", "black", 0.2);
-        plusKet.position = new BABYLON.Vector3(0, -0.1, -1.2);
+        var plusKet = this.makeTextPlane("|+⟩", "black", AxisLabelSize);
+        plusKet.parent = this.sphere;
+        plusKet.position = new BABYLON.Vector3(-0.1, 0.05, -0.9);
         plusKet.isPickable = false;
         
-        var minusKet = this.makeTextPlane("|-⟩", "black", 0.2);
-        minusKet.position = new BABYLON.Vector3(0, 0, 1.2);
+        var minusKet = this.makeTextPlane("|-⟩", "black", AxisLabelSize);
+        minusKet.parent = this.sphere;
+        minusKet.position = new BABYLON.Vector3(-0.1, 0, 0.9);
         minusKet.isPickable = false;
+
+        var iKet = this.makeTextPlane("|i⟩", "black", AxisLabelSize);
+        iKet.parent = this.sphere;
+        iKet.position = new BABYLON.Vector3(0.9, 0.05, -0.1);
+        iKet.isPickable = false;
+
+        var minusiKet = this.makeTextPlane("|-i⟩", "black", AxisLabelSize);
+        minusiKet.parent = this.sphere;
+        minusiKet.position = new BABYLON.Vector3(-0.9, 0, -0.1);
+        minusiKet.isPickable = false;
         
         this.quantumStateArrow = this.createQuantumStateArrow(); 
+        this.quantumStateArrow.parent = this.sphere; 
 
         this.updateQuantumStateArrow();
     }

@@ -41,9 +41,11 @@ function createScene(engine, canvas, config) {
     scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0);
 
     // Add a camera to the scene and attach it to the canvas
-    var camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI / 2.5, Math.PI / 2.5, 6, new BABYLON.Vector3(0, 0, 0), scene);
-    camera.lowerRadiusLimit = 5;
-    camera.upperRadiusLimit = 5;
+    var cameraRadius = 3.3
+    //    var camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI / 2.1, Math.PI / 2.1, cameraRadius, new BABYLON.Vector3(0, 0.1, 0), scene);
+    var camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI / 2.1, Math.PI / 2.1, cameraRadius, new BABYLON.Vector3(0, 0, 0), scene);
+    camera.lowerRadiusLimit = cameraRadius;
+    camera.upperRadiusLimit = cameraRadius;
     camera.attachControl(canvas, true);
 
     // Add lights to the scene
@@ -54,6 +56,7 @@ function createScene(engine, canvas, config) {
     // Buttons, panels
     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
+    /* 
     /////// Outcome probability panel, bar, and labels
     var outcomeProbabilityPanel = new BABYLON.GUI.StackPanel();
     outcomeProbabilityPanel.height = adaptRatioStr(410);
@@ -96,11 +99,12 @@ function createScene(engine, canvas, config) {
     outcomeProbabilityPanel.linkOffsetX = adaptRatioStr(-390);
     /////// END Outcome probability panel, bar, and labels
 
+ */
 
     /////// Gates panel
     var leftPanel = new BABYLON.GUI.StackPanel();
-    leftPanel.width = adaptRatioStr(280);
-    leftPanel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+    leftPanel.width = adaptRatioStr(110);
+    leftPanel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
     leftPanel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
     advancedTexture.addControl(leftPanel);
 
@@ -123,6 +127,7 @@ function createScene(engine, canvas, config) {
         return Btn;
     }
 
+/* 
     var addRadio = function(text, selected, parent, observable) {
         var button = new BABYLON.GUI.RadioButton();
         button.width = "30px";
@@ -142,6 +147,7 @@ function createScene(engine, canvas, config) {
         parent.addControl(header); 
     }
 
+ */
     var zeroStateBtn = CreateImageButton("textures/zero-state.png", buttonSize, paddingTop, () => {
         blochSphere.setProbAmplitudes(math.complex(1, 0), math.complex(0, 0));
         updateQuantumStateDisplay(config);
@@ -172,6 +178,7 @@ function createScene(engine, canvas, config) {
     });
     leftPanel.addControl(hGateBtn);
 
+/* 
     addRadio("θ=π/8", true, leftPanel, () => {
         rxp = Gate.RxPi8;
         ryp = Gate.RyPi8;
@@ -198,6 +205,7 @@ function createScene(engine, canvas, config) {
         updateQuantumStateDisplay(config);
     });
     leftPanel.addControl(rzPi12GateBtn);
+ */
 
     var oneStateBtn = CreateImageButton("textures/one-state.png", buttonSize, paddingTop, () => {
         blochSphere.setProbAmplitudes(math.complex(0, 0), math.complex(1, 0));
@@ -229,6 +237,7 @@ function createScene(engine, canvas, config) {
     });
     rightPanel.addControl(tDagGateBtn);
 
+    /* 
     addRadio("θ=π/12", false, rightPanel,  () => {
         rxp = Gate.RxPi12;
         ryp = Gate.RyPi12;
@@ -256,6 +265,7 @@ function createScene(engine, canvas, config) {
     });
     rightPanel.addControl(rzmPi12GateBtn);
    
+    */
     /////// END Gates panel
 
 
@@ -289,6 +299,7 @@ function createScene(engine, canvas, config) {
     /////// END Top panel
 
 
+/* 
     /////// Bottom panel
     var UiPanel = new BABYLON.GUI.StackPanel();
     UiPanel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
@@ -307,6 +318,7 @@ function createScene(engine, canvas, config) {
     basisLabel1.color = "black";
     basisLabel1.fontSize = config.fontSize;
 
+ */
 
     //// Dirac notation grid
     quantumStateDiracGrid.width = adaptRatioStr(546);
@@ -327,6 +339,7 @@ function createScene(engine, canvas, config) {
 
     // Grid
  
+ /* 
     quantumStateGrid.width = adaptRatioStr(300);
     quantumStateGrid.height = adaptRatioStr(80);
 
@@ -445,6 +458,7 @@ function createScene(engine, canvas, config) {
 
 
     advancedTexture.addControl(statevectorInputText);
+ */
 
 
     /////// Control panel
