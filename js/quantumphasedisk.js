@@ -124,7 +124,7 @@ class QuantumPhaseDisk extends BABYLON.Mesh {
 
         this.quantumPhaseArrow = this.createQuantumPhaseArrow()
 */
-        this.updateQuantumPhaseArrow()
+//        this.updateQuantumPhaseArrow()
     }
 
 /* 
