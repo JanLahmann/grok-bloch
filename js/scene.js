@@ -617,5 +617,5 @@ function updateQuantumStateDisplay(config) {
     quantumStateDiracGrid.addControl(azimuthRadiansTextBlock, 0, 5)
      ////// END Update Dirac notation
 
-    quantumPhaseDisk.updateQuantumPhaseArrow();
+    //quantumPhaseDisk.updateQuantumPhaseArrow();
 }

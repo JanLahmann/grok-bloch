@@ -16,12 +16,12 @@
 class QuantumPhaseDisk extends BABYLON.Mesh {
     constructor(name, scene, blochSphere, verticalPositionInScene) {
         super(name, scene);
+/* 
         this.blochSphere = blochSphere;
 
         this.scene = scene;
         this.verticalPositionInScene = verticalPositionInScene;
 
-/* 
         this.phaseCyl =
             BABYLON.MeshBuilder.CreateCylinder("phaseCyl",
                 {height: 0.01, diameter: 2,
@@ -46,11 +46,10 @@ class QuantumPhaseDisk extends BABYLON.Mesh {
         
 
         this.lineColor = new BABYLON.Color3(.3, .3, .3);
- */
 
         this.quantumPhaseArrow = null;
-
         this.setupDisk();
+*/
     }
 
  /*    
@@ -62,12 +61,10 @@ class QuantumPhaseDisk extends BABYLON.Mesh {
 
         return new BABYLON.Vector3(xPos, yPos, zPos);
     }
- */
 
     /// Methods to construct the 3D quantum phase cylinder
     setupDisk() {
         var myMaterial = new BABYLON.StandardMaterial("myMaterial", this.scene);
-/*
         this.phaseCyl.material = myMaterial;
         //this.position.y = this.verticalPositionInScene;
         this.phaseCyl.scaling = new BABYLON.Vector3(0.6, 0.6, 0.6);
@@ -123,11 +120,10 @@ class QuantumPhaseDisk extends BABYLON.Mesh {
         pi3Over2Label.isPickable = false;
 
         this.quantumPhaseArrow = this.createQuantumPhaseArrow()
-*/
 //        this.updateQuantumPhaseArrow()
     }
 
-/* 
+ 
     createcircunferenceLine() {
         var myPoints = [];
         var radius = 1 - 0.02;
@@ -188,18 +184,16 @@ class QuantumPhaseDisk extends BABYLON.Mesh {
         
         return arrow
     }
- */
-
+ 
     updateQuantumPhaseArrow() {
         // if (this.quantumPhaseLine) this.quantumPhaseLine.dispose();
         // if (this.quantumPhaseLineCap) this.quantumPhaseLineCap.dispose();
 
-/* 
         this.quantumPhaseArrow.rotation = new BABYLON.Vector3(-Math.PI / 2, -this.blochSphere.getAzimuthRadians(), 0);
         var value = -this.blochSphere.getProbability0()
         this.phaseCylValue.scaling = new BABYLON.Vector3(value, 0.1, value); 
      
-      */
     }
+*/
 
 }
