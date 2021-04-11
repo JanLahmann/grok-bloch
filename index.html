@@ -51,18 +51,101 @@
             margin: 0;
             padding: 0;
         }
-        
+
         #renderCanvas {
             width: 100%;
             height: 100%;
             touch-action: none;
+            outline: none;
+        }
+
+        #fullscreenToggle {
+            position: fixed;
+            top: 40px;
+            right: 45px;
+            width: 50px;
+            height: 50px;
+            border: none;
+            background: rgba(0, 0, 0, .8);
+            border: 1px solid rgba(0, 0, 0, .9);
+            border-radius: 100%;
+            color: white;
+            font-size: 20pt;
+            cursor: pointer;
+            text-indent: -99999px;
+        }
+
+        #fullscreenToggle:hover {
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
+        }
+
+        #fullscreenToggle:focus {
+            outline: none;
+        }
+
+        .btn-max {
+            background-image: url(images/maximize.svg) !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: 25px !important;
+        }
+
+        .btn-min {
+            background-image: url(images/minimize.svg) !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: 25px !important;
         }
     </style>
 </head>
 
 <body>
+    <button id="fullscreenToggle" class="btn-max">toggle fullscreen</button>
     <canvas id="renderCanvas"></canvas>
     <script src="js/main.js"></script>
+    <script>
+        function toggleFullScreen() {
+            const ele = document.documentElement;
+            if (!window.screenTop && !window.screenY) {
+                exitFullScreen();
+                toggleFullScreenButtonIcon();
+
+            } else {
+                goFullScreen();
+                toggleFullScreenButtonIcon();
+            }
+        }
+
+        function goFullScreen() {
+            const ele = document.documentElement,
+                request = ele.requestFullScreen
+                    || ele.webkitRequestFullScreen
+                    || ele.mozRequestFullScreen
+                    || ele.msRequestFullscreen
+
+            request.call(ele)
+        }
+
+        function exitFullScreen() {
+            const ele = document,
+                request = ele.exitFullscreen
+                    || ele.webkitExitFullscreen
+                    || ele.webkitExitFullscreen
+                    || ele.msExitFullscreen
+
+            request.call(ele)
+        }
+
+        function toggleFullScreenButtonIcon() {
+            document.getElementById("fullscreenToggle").classList.toggle('btn-max');
+            document.getElementById("fullscreenToggle").classList.toggle('btn-min');
+        }
+
+        document.querySelector('#fullscreenToggle')
+            .addEventListener('click', () => {
+                toggleFullScreen();
+            })
+    </script>
 </body>
 
 </html>
